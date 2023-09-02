@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        label {
+            font-size: 18px;
+            margin-left: 20px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            padding: 6px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 8px 12px;
+            font-size: 16px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+
+        select {
+            padding: 6px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-left: 10px;
+        }
+
+        h2 {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Search Page</h1>
+
+<form action="{{ url_for('search', category = 'category', prduct_name='product_name', pages='num_pages') }}" method="post">
+
+    <label for="category">Category:</label>
+    <select name="category" style="width: 150px;">
+        <option value="smart_phone">Smart Phone</option>
+        <option value="laptop">Laptop</option>
+        <option value="camera">Camera</option>
+        <option value="television">Television</option>
+    </select>
+
+    <label for="product_name">Product Name:</label>
+    <input type="text" name="product_name" placeholder="Product Name" required>
+    
+    <label for="search_input">Enter URL:</label>
+    <input type="text" name="search" placeholder="Search" required>
+    
+    <label for="num_pages">Number of Pages:</label>
+    <input type="number" name="num_pages" min="1" value="1" required style="width: 50px;">
+    
+    <button type="submit">Search</button>
+</form>
+
+{% if results %}
+    <h2>Search Results: Sample 10 Records</h2>
+    <table border="1">
+        <tr>
+            {% for key in results[0].keys() %}
+                <th>{{ key }}</th>
+            {% endfor %}
+        </tr>
+        {% for item in results %}
+            <tr>
+                {% for value in item.values() %}
+                    <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+
+</body>
+</html>
+
+<!-- -===================================================== -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Search Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        label {
+            font-size: 18px;
+        }
+
+        input[type="text"] {
+            padding: 6px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 8px 12px;
+            font-size: 16px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        h2 {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Search Page</h1>
+
+<form action="{{ url_for('search', prduct_name = 'product_name', pages = 'num_pages') }}" method="post">
+
+    <label for="product_name" style="margin-left: 20px;">Product Name:</label>
+    <input type="text" name="product_name" placeholder="Product Name" required>
+
+    <label for="search_input" style="margin-left: 20px;">Enter URL:</label>
+    <input type="text" name="search" placeholder="Search" required>
+    
+    <label for="num_pages" style="margin-left: 20px;">Number of Pages:</label>
+    <input type="number" name="num_pages" min="1" value="1" required style="width: 50px;">
+    
+    <button type="submit" style="margin-left: 20px;">Search</button>
+</form>
+
+{% if results %}
+    <h2>Search Results:</h2>
+    <table border="1">
+        <tr>
+            {% for key in results[0].keys() %}
+                <th>{{ key }}</th>
+            {% endfor %}
+        </tr>
+        {% for item in results %}
+            <tr>
+                {% for value in item.values() %}
+                    <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+
+</body>
+</html> -->
+
+
+
+<!-- <html>
+    <head>
+        Search the Required Item
+    </head>
+    <body>
+        <dev class="search">
+            <h1>Search Required Image</h1>
+
+            <form action="{{url_for('search')}}" method="post">
+                <input type="text" name="search" placeholder="Search" required="required">
+                <button type="submit" class="btn btn-primary btn-block btn-large">Search</button>
+            </form> 
+        </dev>
+    </body>
+</html> -->
